@@ -1,0 +1,289 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root{
+  --bc-body:#EFF1FF;
+  --bc-header:#8E9AAF;
+  --bc-header-2:#CBC0D3;
+  --bc-card-h2:#FEEAFA;
+  
+  font-size: 62.5%;
+  
+  --ff-header:'Staatliches',sans-serif;
+  --ff-body:'Palanquin',sans-serif;
+  --ff-body-2:'Roboto',sans-serif;
+  --fc-header:#FFFFFF;
+  --fc-body-p:#23053A;
+  --fc-body-h2:#4A4E69;
+}
+
+body{
+  font-family: var(--ff-body);
+  background: var(--bc-body);
+  position: relative;
+  font-size: 1.6rem;
+}
+
+.page{
+  max-width: 38.4rem;
+  margin: 0 auto;
+}
+
+header{
+  position: relative;
+  text-align: center;
+  padding-top: 3.2rem;
+  background-color: var(--bc-header);
+}
+
+header img {
+  transition: all 1000ms;
+  animation: uptodown 600ms 200ms backwards;
+
+}
+
+header img:hover{
+  transform:rotate(360deg)
+}
+
+header h1{
+  background: var(--bc-header-2);
+  font-family: var(--ff-header);
+
+  font-size: 4rem;
+  line-height: 3.4rem;
+  letter-spacing: 0.05em;
+
+  color: var(--fc-header);
+  padding-block: 0.7rem;
+}
+
+header p{
+  padding: 3.2rem;
+  animation: uptodown 600ms 300ms backwards;
+}
+
+header p, 
+footer{
+  text-align: center;
+
+  font-family: var(--ff-body);
+  font-size: 1.4rem;
+  line-height: 1.5rem;
+}
+
+header p, 
+main, 
+footer{
+  background: var(--bc-body);
+}
+
+
+main{
+  padding: 3.2rem;
+}
+
+.cards{
+  display: grid;
+  gap: 3.2rem;
+
+  animation: uptodown 600ms 200ms backwards;
+}
+
+.cards .card{
+  position: relative;
+}
+
+.cards .card img{
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+
+  border-radius: 2rem;
+
+  transition: all 200ms;
+}
+
+.cards .card img:hover{
+  transform: scale(1.1);
+  filter:brightness(1.2);
+}
+
+.cards .card h2{
+  position: absolute;
+  top: 1.6rem;
+  right: 1.6rem;
+  
+  z-index: 0;
+
+  background: var(--bc-card-h2);
+
+  font-family: var(--ff-header);
+  font-size: 2rem;
+  line-height: 3.4rem;
+  letter-spacing: 0.05rem;
+
+  color: var(--fc-body-h2);
+  text-transform: uppercase;
+
+  padding: 1px 2.4rem;
+  border-radius: 2rem;
+}
+
+footer{
+
+  animation: uptodown 600ms 350ms backwards;
+  display: none;
+}
+
+/* para deixar o h2 no tamanho limite ao diminuir ou aumentar*/
+@media (max-width:374px){
+  .cards .card h2 {
+    top: 1.6rem;
+    left: clamp(4rem, 54%, 17rem);
+  }
+}
+
+@media (min-width:768px){
+  .page{
+    max-width: 200rem;
+    height: 100vh;
+    display: grid;
+    grid-template-areas: "A B B"
+                         "A C C";
+    margin: 0;
+                      
+  }
+
+  header {
+    grid-area: A;
+    background: var(--bc-header);
+  }
+
+  header p {
+
+    margin: auto;
+    max-width: 32rem;
+    
+    padding: 3.2rem;
+  
+    
+    background-color: transparent;
+    font-family: var(--ff-body-2);
+    font-weight: 400;
+    font-size: 2rem;
+    line-height: 2.5rem;
+
+    color: var(--fc-header);
+  }
+
+  main {
+    grid-area: B;
+    padding: 5rem;
+  }
+
+  .cards {
+    grid-template-areas: "A B"
+                         "C D"
+                         "E F "
+  }
+
+  .cards .card img {
+
+    height:19rem;
+  }
+
+  footer {
+    display: block;
+    grid-area: C;
+  }
+
+  footer a{
+    text-decoration: none;
+    color: var(--fc-body-p);
+    font-weight: 800;
+  }
+
+}
+
+@media (min-width:1200px){
+  .page {
+    grid-template-columns: 1fr 2fr;
+  }
+
+  header p {
+    padding: 3.2rem 0 0 0;
+  }
+  footer{
+    padding-bottom: 3.2rem;
+  }
+
+  .cards {
+    grid-template-areas: "A C B"
+                         "E C F"
+                         "E D F"
+  }
+
+  .cards div:nth-child(1) {
+    grid-area: A;
+  }
+
+  .cards div:nth-child(2) {
+    grid-area: B;
+  }
+
+  .cards div:nth-child(3) {
+    grid-area: C;
+  }
+
+  .cards div:nth-child(4) {
+    grid-area: D;
+  }
+
+  .cards div:nth-child(5) {
+    grid-area: E;
+  }
+
+  .cards div:nth-child(6) {
+    grid-area: F;
+  }
+
+  .cards div:nth-child(1) img,
+  .cards div:nth-child(4) img,
+  .cards div:nth-child(3) img,
+  .cards div:nth-child(2) img,
+  .cards div:nth-child(5) img,
+  .cards div:nth-child(6) img {
+      height: auto;
+  }
+
+  .cards .card h2 {
+    top: 1.6rem;
+    right: 1.6rem;
+    z-index: 1;
+  
+  }
+}
+  
+@keyframes uptodown {
+  0%{
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+
+  100% {
+    transform: translateY(0);
+    
+  }
+}
+
+
+
+
+
+
+
+
